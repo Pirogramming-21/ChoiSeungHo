@@ -1,0 +1,122 @@
+
+#start, #stop, #reset{
+    font-weight: bold;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: white;
+}
+
+.stopwatch {
+    background-color: orange;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display {
+    font-size: 50px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #888;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: white;
+    border: 2px solid #888;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+.records {
+    text-align: left;
+    background-color: #d1d5d9;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #888;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#record-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#record-list li {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+#record-list li input {
+    margin-right: 10px;
+}
+
+#delete-selected {
+    background-color: skyblue;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 10px auto 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#delete-selected:hover {
+    background-color: #ff1a1a;
+}
+
+button#delete-all {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+}
+
+button#delete-all:hover {
+    color: #ff4d4d;
+}

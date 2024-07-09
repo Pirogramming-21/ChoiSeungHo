@@ -1,0 +1,68 @@
+#hamburger-icon {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#hamburger-icon>div {
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+#hamburger-icon>input[type="checkbox"]:checked~div:nth-of-type(1) {
+  display: none;
+}
+
+
+#hamburger-icon>input[type="checkbox"]:checked~div:nth-of-type(2) {
+  transform-origin: top;
+  transform: rotate(-45deg);
+}
+
+#hamburger-icon>input[type="checkbox"]:checked~div:nth-of-type(3) {
+  /* 주석transform: rotate(-45deg); */
+  transform-origin: bottom;
+  transform: rotate(45deg) translate(-8px, -10px);
+}
+
+@media screen and (min-width: 769px) {
+
+  #hamburger-icon {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .main-header--container ul {
+      display: none;
+  }
+
+  .sidebar {
+      width: 250px;
+      height: calc(100vh - 9rem);
+      position: fixed;
+      background-color: rgb(63, 63, 63);
+      top:9rem;
+      right: -300px;
+      transition: 0.3s;
+  }
+
+  .sidebar > ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+      font-size: 2.2rem;
+      text-align: right;
+      margin-top: 40px;
+      margin-right: 40px;
+  }
+
+  #hamburger-icon > input[type="checkbox"]:checked ~ .sidebar {
+      right: 0;
+  }
+}

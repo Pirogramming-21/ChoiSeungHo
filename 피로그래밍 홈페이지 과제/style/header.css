@@ -1,0 +1,120 @@
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body { 
+  background-color: black;
+  color: white;
+}
+main {
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.53);
+}
+#main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--header-height);
+  font-family: 'NEXON Lv1 Gothic OTF';
+  margin: 0 214.8px;
+}
+.main-header--container {
+  width: min(100%, 1200px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.blind {
+  /* 'display: none'으로 하면 되는데 시각장애인을 위해 아래의 코드 사용 */
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.main-text {
+  margin-top: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: var(--gutter);
+  font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+.main-text > h1 {
+  font-family: "Hubballi";
+  color: var(--green-1);
+  font-size: var(--hero);
+  font-weight: 200;
+}
+
+.main-text > h2 {
+  font-size: var(--heading3);
+}
+
+.main-header--container > ul {
+  display: flex;
+  font-size: 1.8rem;
+  gap: 2rem;
+}
+
+.main-header--container > ul >li:hover {
+  color: var(--green);
+}
+
+#hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  width: 30px;
+  height: 25px;
+  justify-content: space-between;
+}
+#hamburger-icon > input[type="checkbox"] {
+  display: none;
+}
+#hamburger-icon > div {
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+#hamburger-icon > input[type="checkbox"]:not(:checked) ~ div:nth-of-type(1) {
+  width: 50%;
+}
+
+#hamburger-icon > input[type="checkbox"]:not(:checked) ~ div:nth-of-type(3) {
+  width: 75%;
+}
+
+#hamburger-icon > input[type="checkbox"]:checked ~ div:nth-of-type(1) {
+  transform: rotate(48deg);
+  transform-origin: 0 0;
+
+}
+#hamburger-icon > input[type="checkbox"]:checked ~ div:nth-of-type(2) {
+  display: none;
+}
+#hamburger-icon > input[type="checkbox"]:checked ~ div:nth-of-type(3) {
+  transform: rotate(-48deg);
+  transform-origin: 0 0;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.1rem;
+  gap: 40px;
+  align-items: flex-end;
+  margin-right: 3em;
+  margin-top: 3em;
+
+}
