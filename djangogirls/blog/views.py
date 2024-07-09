@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Post
 from django.utils import timezone
 
+
 # Create your views here.
 # 로거 생성
 
