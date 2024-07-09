@@ -1,64 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>소셜 로그인</title>
-<!-- Font Awesome CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-K1+e2/U7teFjA7DbXJo8r3Ozr9G+jKq8+0giP6DbLXJx1Z3WEno5cL4R0wwS2aQ9n7ggIGl33WGLHs7dD7nNCA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 50px;
-}
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-.social-buttons {
-    margin-top: 20px;
-}
-.social-buttons button {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-.social-buttons button:hover {
-    background-color: #45a049;
-}
-.social-buttons .naver-btn {
-    background-color: #1EC800;
-}
-.social-buttons .kakao-btn {
-    background-color: #FFEB00;
-}
-.social-buttons button i {
-    margin-right: 10px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승호의 스톱워치</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h2>소셜 로그인 하기</h2>
-    <p>아래 버튼을 클릭하여 네이버나 카카오로 로그인할 수 있습니다.</p>
-    <div class="social-buttons">
-        <button class="naver-btn"><i class="fab fa-naver"></i> 네이버로 로그인하기</button>
-        <button class="kakao-btn"><i class="fab fa-kakao"></i> 카카오로 로그인하기</button>
+    <div class="stopwatch">
+        <h1>🕒 승호의 스톱워치</h1>
+        <div class="display" id="display">00:00</div>
+        <div class="buttons">
+            <button id="start">시작</button>
+            <button id="stop">멈춤</button>
+            <button id="reset">초기화</button>
+        </div>
+        <div class="records">
+            <div class="header">
+                <input type="checkbox" id="select-all">
+                <label for="select-all">구간 기록</label>
+                <button id="delete-all">🗑️</button>
+            </div>
+            <ul id="record-list"></ul>
+            <button id="delete-selected">선택 삭제</button>
+        </div>
     </div>
-</div>
+    <script src="main.js"></script>
 </body>
 </html>
