@@ -1,4 +1,4 @@
-# 🤷‍♂️피로그래밍 21기 최승호 과제 리포지토리🤷‍♂️
+![20240628_224430](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/465d8c34-2377-4e4c-8adf-ed908788319e)# 🤷‍♂️피로그래밍 21기 최승호 과제 리포지토리🤷‍♂️
 
 ## 🕰️ 활동 기간
 * 24.06.22일 - 24.08.20일
@@ -14,12 +14,13 @@
 
     **깃허브 회원가입 페이지 클론하기**
   
-  ![image](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/9b3718a0-c6d6-4073-8764-28d9215b490b)
+    ![image](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/9b3718a0-c6d6-4073-8764-28d9215b490b)
 
 
     **제로쿨 네이버 클론 강의 듣기**
 
-  ![20240626_203624](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/de95581a-7f0a-4e69-9e4e-0a257da0100b)
+    ![20240626_203624](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/94f947d7-129d-4dc9-95e8-24633c480a1d)
+
 
 
 - ### 6.27 (목) CSS 심화, CSS 반응형
@@ -39,11 +40,14 @@
 
     포트폴리오
 
-    ![20240628_224430](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/c910359a-0ba0-40a2-89d9-c84e547d930f)
+    ![20240628_224430](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/25b965b8-8d7e-42b0-ba7b-9fbae32b2cda)
+
+    
 
     인터뷰
-  
-    ![20240628_225546](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/9b688ad6-e4c8-4272-9126-e6295e2ac796)
+      
+    ![20240628_225546](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/f789b60c-83d1-4749-a584-822e47211e07)
+
 
 - ### 6.29 (토) Git 협업 실습, 인스타그램 클론 코딩 - 대면 
     
@@ -54,8 +58,10 @@
     - **세번째 과제**
 
     **팀플 협업 클론코딩!!**
-    ![20240703_215454](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/955c3dd2-905f-47d5-990d-e1dc800d5844)
 
+    ![20240703_215454](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/1f8096f2-dfcf-44ac-b74e-1bc6043a4754)
+ 
+ 
 
 ## 😊Week2
 - ### 7.2 (화) 자바스크립트 이론 및 기본 문법
@@ -70,11 +76,13 @@
 
 
     **드림코딩 쇼핑몰 미니게임 강의 듣기!!**
-    ![20240703_220049](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/53710b79-791c-41a3-8ab7-06392f04ee1b)
+    ![20240703_220049](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/6b2991b4-f0f4-41c6-917d-fda988f6589e)
+
 
 
     **숫자 야구게임**
-    ![20240703_220012](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/f78815db-2b32-4f2f-85da-c44db144030a)
+    ![20240703_220012](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/ecb866ba-30e0-4ec2-beb6-46775bc9f42a)
+
 
 - ### 7. 4(목) html, css, js 종합 마무리
     
@@ -99,7 +107,8 @@
 
     5번만 추가했습니다!
   
-    ![20240705_224946](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/1967d9ca-0407-404f-a695-4b20895a6faf)
+    ![20240705_224946](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/b3a12a0f-d575-4199-a993-00498fa9c5cb)
+
 
 
 
