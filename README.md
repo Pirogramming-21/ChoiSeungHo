@@ -14,7 +14,8 @@
 
     **깃허브 회원가입 페이지 클론하기**
   
-    ![image](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/9b3718a0-c6d6-4073-8764-28d9215b490b)
+    ![깃허브](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/98ca17fc-eccb-4c6a-a1bc-84b1a5c5e6e6)
+
 
 
     **제로쿨 네이버 클론 강의 듣기**
@@ -100,7 +101,8 @@
 
     **성적처리 프로그램**
   
-    ![image](https://github.com/Pirogramming-21/Choi-SeungHo/assets/74850409/5c94ddc1-e424-453f-85b4-df31adec652c)
+    ![성적처리](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/65c46c3e-3bb0-4f44-b827-d8da470dfa5e)
+
 
 
     **스톱워치 구현**
@@ -108,6 +110,40 @@
     5번만 추가했습니다!
   
     ![20240705_224946](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/b3a12a0f-d575-4199-a993-00498fa9c5cb)
+
+
+
+- ### 7. 6(토) 웹 개발 개론(피로그래밍 조언) / 프로젝트 기획
+    
+    오전 : 웹 개발 개론(피로그래밍 조언)
+    
+    오후 : 아이디어 기획과 협업(강의자료)
+
+
+
+    - **여섯번째 과제**
+
+
+    **술게임 만들기!**
+  
+    ![술게임](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/7556bc95-2fd3-493c-9ddd-7fca49d12299)
+
+
+- ### 7. 9() Django 설치 및 가상환경 설정 / 크롤링 
+    
+    오전 : 크롤링
+    
+    오후 : Django 설치 및 가상환경 설정
+
+
+
+    - **일곱번째 과제**
+
+
+    **DjangoGirls 튜토리얼 따라하기!**
+
+
+    ![djanolirs](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/4688c870-56a4-4a8a-8e34-5ec3517c5177)
 
 
 
