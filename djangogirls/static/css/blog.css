@@ -10,6 +10,10 @@
     text-decoration: none;
 }
 
+body{
+    background-color: red;
+}
+
 .content {
     margin-left: 40px;
 }
