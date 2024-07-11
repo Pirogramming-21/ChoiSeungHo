@@ -2,8 +2,18 @@
 {% extends 'header.html' %}
 
 {% block content %}
-
 <div class="home">
+    <div class="search-bar">
+        <form method="get" action="">
+            <input type="text" name="search" placeholder="영화 제목 검색">
+            <select name="sort_by">
+                <option value="rate">별점순</option>
+                <option value="year">상영년도순</option>
+                <option value="time">시간순</option>
+            </select>
+            <button type="submit">검색</button>
+        </form>
+    </div>
     <div class="container5">
         {% for list in review_list %}
             <a href="review/{{ list.id }}">
@@ -13,13 +23,14 @@
                     <div class="movie-info">
                         개봉년도: {{ list.year }}<br>
                         장르: {{ list.genre }}<br>
-                        별점: {{ list.rate }}
+                        별점: {{ list.rate }}<br>
+                        상영시간: {{ list.movie_time }}분
                     </div>
                 </div>
             </a>
         {% endfor %}
-
     </div>
 </div>
+
 
 {% endblock %}

@@ -6,7 +6,21 @@ from review.models import Review
 # Create your views here.
 
 def home(request):
+    search_query = request.GET.get('search', '')
+    sort_by = request.GET.get('sort_by', 'rate')
+
     review_list = Review.objects.all()
+    if search_query:
+        # 검색어가 제목에 포함된 리뷰를 필터링
+        review_list = review_list.filter(title__icontains=search_query)
+
+    # 정렬
+    if sort_by == 'year':
+        review_list = review_list.order_by('-year')
+    elif sort_by == 'time':
+        review_list = review_list.order_by('-movie_time')
+    else:
+        review_list = review_list.order_by('-rate')
 
     context = {'review_list': review_list}
     return render(request, 'home.html', context)
