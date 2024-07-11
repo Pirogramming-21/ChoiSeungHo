@@ -34,3 +34,30 @@ def review_detail(request, pk):
 
     context = {'review': review}
     return render(request, 'review_detail.html', context)
+
+
+def review_update(request, pk):
+    reviews = Review.objects.get(id=pk)
+    context = {'review': reviews}
+    print(reviews.title)
+    print(reviews.movie_time)
+    if request.method == 'POST':
+        reviews.title = request.POST['title']
+        reviews.review = request.POST['review']
+        reviews.genre = request.POST['genre']
+        reviews.rate = request.POST['star'] + '점'
+        reviews.movie_time = request.POST['movie_time']
+        reviews.director = request.POST['director']
+        reviews.actor = request.POST['actor']
+        reviews.year = request.POST['year']
+
+        reviews.save()
+        return redirect(f'/review/{reviews.id}')
+    return render(request, 'review_update.html', context)
+
+
+def review_delete(request, pk):
+    if request.method == 'POST':
+        review = Review.objects.get(id=pk)
+        review.delete()
+        return redirect('/')
