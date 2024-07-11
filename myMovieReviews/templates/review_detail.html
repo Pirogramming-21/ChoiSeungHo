@@ -17,7 +17,7 @@
     </div>
     <div class="movie-details">
         <div class="movie-poster">
-            <img src="poster.jpg" alt="포스터 이미지" style="width: 100%; height: 100%; object-fit: cover;">
+            <img src="{{ review.img_url.url }}" alt="포스터 이미지" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="movie-info">
             <p><strong>개봉년도:</strong> {{ review.year }}</p>

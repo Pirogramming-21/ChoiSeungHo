@@ -22,7 +22,8 @@ def review_add(request):
             movie_time=request.POST['movie_time'],
             director=request.POST['director'],
             actor=request.POST['actor'],
-            year=request.POST['year']
+            year=request.POST['year'],
+            img_url=request.FILES['img_url']
         )
         return redirect('/')
 
@@ -50,7 +51,7 @@ def review_update(request, pk):
         reviews.director = request.POST['director']
         reviews.actor = request.POST['actor']
         reviews.year = request.POST['year']
-
+        reviews.img_url = request.FILES['img_url']
         reviews.save()
         return redirect(f'/review/{reviews.id}')
     return render(request, 'review_update.html', context)

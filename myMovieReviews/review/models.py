@@ -13,5 +13,6 @@ class Review(models.Model):
     year=models.CharField(max_length=5, default='0')
     rate = models.CharField(max_length=3, default='0')
     movie_time = models.PositiveIntegerField()
+    img_url = models.ImageField(upload_to='images/', default='images/basic.jpg')
     director = models.CharField(max_length=10)
     actor = models.CharField(max_length=10)

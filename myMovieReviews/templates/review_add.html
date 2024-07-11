@@ -3,66 +3,71 @@
 {% block content %}
 
 
-<div class="add">
-    <div class="container3">
-        <h1>영화 리뷰 작성</h1>
-        <form method="post" action="{% url 'review_add' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="title">제목</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-            <div class="form-group">
-                <label for="review">리뷰</label>
-                <textarea id="review" name="review" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="year">개봉년도</label>
-                <select id="year" name="year" required>
-                    <option value="">선택하세요</option>
-                    <!-- 개봉년도 옵션 -->
-                    <script>
-                        const currentYear = new Date().getFullYear();
-                        for (let year = currentYear; year >= 2000; year--) {
-                            document.write(`<option value="${year}">${year}</option>`);
-                        }
-                    </script>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>장르</label>
-                <div class="radio-group">
-                    <label><input type="radio" name="genre" value="액션" required> 액션</label>
-                    <label><input type="radio" name="genre" value="드라마" required> 드라마</label>
-                    <label><input type="radio" name="genre" value="코미디" required> 코미디</label>
-                    <label><input type="radio" name="genre" value="로맨스" required> 로맨스</label>
-                    <label><input type="radio" name="genre" value="공포" required> 공포</label>
+    <div class="add">
+        <div class="container3">
+            <h1>영화 리뷰 작성</h1>
+            <form method="post" enctype="multipart/form-data" action="{% url 'review_add' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">제목</label>
+                    <input type="text" id="title" name="title" required>
                 </div>
-            </div>
-            <div class="form-group">
-                <label>별점</label>
-                <div class="rating-group">
-                    <label><input type="radio" name="star" value="1" required> 1</label>
-                    <label><input type="radio" name="star" value="2" required> 2</label>
-                    <label><input type="radio" name="star" value="3" required> 3</label>
-                    <label><input type="radio" name="star" value="4" required> 4</label>
-                    <label><input type="radio" name="star" value="5" required> 5</label>
+                <div class="form-group">
+                    <label for="review">리뷰</label>
+                    <textarea id="review" name="review" rows="4" required></textarea>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="movie_time">영화 총 시간 (분)</label>
-                <input type="number" id="movie_time" min=0 name="movie_time" required>
-            </div>
-            <div class="form-group">
-                <label for="director">감독</label>
-                <input type="text" id="director" name="director" required>
-            </div>
-            <div class="form-group">
-                <label for="actor">배우</label>
-                <input type="text" id="actor" name="actor" required>
-            </div>
-            <button type="submit" class="btn-submit">리뷰 제출</button>
-        </form>
+
+                <div class="form-group">
+                    <label for="img_url">이미지</label>
+                    <input type="file" id="img_url" name="img_url" required>
+                </div>
+                <div class="form-group">
+                    <label for="year">개봉년도</label>
+                    <select id="year" name="year" required>
+                        <option value="">선택하세요</option>
+                        <!-- 개봉년도 옵션 -->
+                        <script>
+                            const currentYear = new Date().getFullYear();
+                            for (let year = currentYear; year >= 2000; year--) {
+                                document.write(`<option value="${year}">${year}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>장르</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="genre" value="액션" required> 액션</label>
+                        <label><input type="radio" name="genre" value="드라마" required> 드라마</label>
+                        <label><input type="radio" name="genre" value="코미디" required> 코미디</label>
+                        <label><input type="radio" name="genre" value="로맨스" required> 로맨스</label>
+                        <label><input type="radio" name="genre" value="공포" required> 공포</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>별점</label>
+                    <div class="rating-group">
+                        <label><input type="radio" name="star" value="1" required> 1</label>
+                        <label><input type="radio" name="star" value="2" required> 2</label>
+                        <label><input type="radio" name="star" value="3" required> 3</label>
+                        <label><input type="radio" name="star" value="4" required> 4</label>
+                        <label><input type="radio" name="star" value="5" required> 5</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="movie_time">영화 총 시간 (분)</label>
+                    <input type="number" id="movie_time" min=0 name="movie_time" required>
+                </div>
+                <div class="form-group">
+                    <label for="director">감독</label>
+                    <input type="text" id="director" name="director" required>
+                </div>
+                <div class="form-group">
+                    <label for="actor">배우</label>
+                    <input type="text" id="actor" name="actor" required>
+                </div>
+                <button type="submit" class="btn-submit">리뷰 제출</button>
+            </form>
+        </div>
     </div>
-</div>
 {% endblock %}

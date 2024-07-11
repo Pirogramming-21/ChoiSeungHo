@@ -8,7 +8,7 @@
         {% for list in review_list %}
             <a href="review/{{ list.id }}">
                 <div class="movie">
-                    <img src="spiderman.png" alt="스파이더맨">
+                    <img src="{{ list.img_url.url }}" alt="스파맨">
                     <div class="movie-title">{{ list.title }}</div>
                     <div class="movie-info">
                         개봉년도: {{ list.year }}<br>
