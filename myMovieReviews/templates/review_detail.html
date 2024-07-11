@@ -1,95 +1,9 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+{% extends 'header.html' %}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-        }
+{% block content %}
 
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 8px 16px;
-            background-color: #444;
-            border-radius: 4px;
-        }
 
-        .navbar a:hover {
-            background-color: #555;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-        }
-
-        .movie-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .movie-header h1 {
-            margin: 0;
-        }
-
-        .movie-header .actions a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-
-        .movie-details {
-            display: flex;
-            margin-top: 20px;
-        }
-
-        .movie-poster {
-            width: 150px;
-            height: 200px;
-            background-color: #ddd;
-            margin-right: 20px;
-        }
-
-        .movie-info {
-            flex: 1;
-        }
-
-        .movie-info p {
-            margin: 5px 0;
-        }
-
-        .movie-description {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-<div class="navbar">
-    <a href="#">홈</a>
-    <a href="add">리뷰 쓰기</a>
-</div>
-<div class="container">
+<div class="container2">
     <div class="movie-header">
         <h1>{{ review.title }}</h1>
         <div class="actions">
@@ -118,5 +32,4 @@
         <p>{{ review.review }}</p>
     </div>
 </div>
-</body>
-</html>
+{% endblock %}

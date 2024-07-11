@@ -1,10 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>승호의 영화 리뷰</title>
+    <link rel="stylesheet" href="{% static '/add.css' %}">
+    <link rel="stylesheet" href="{% static '/detail.css' %}">
+    <link rel="stylesheet" href="{% static '/header.css' %}">
+    <link rel="stylesheet" href="{% static '/home.css' %}">
+    <link rel="stylesheet" href="{% static '/update.css' %}">
 </head>
 <body>
+<div class="navbar">
+    <a href="/">홈</a>
+    <a href="/add">리뷰 쓰기</a>
+</div>
 
+{% block content %}
+{% endblock %}
 </body>
 </html>

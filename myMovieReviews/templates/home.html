@@ -1,88 +1,25 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화 목록</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            width: 80%;
-            margin-top: 20px;
-        }
+{% extends 'header.html' %}
 
-        .movie {
-            background: #f0f0f0;
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-        }
+{% block content %}
 
-        .movie img {
-            width: 100%;
-            border-radius: 10px;
-        }
+<div class="home">
+    <div class="container5">
+        {% for list in review_list %}
+            <a href="review/{{ list.id }}">
+                <div class="movie">
+                    <img src="spiderman.png" alt="스파이더맨">
+                    <div class="movie-title">{{ list.title }}</div>
+                    <div class="movie-info">
+                        개봉년도: {{ list.year }}<br>
+                        장르: {{ list.genre }}<br>
+                        별점: {{ list.rate }}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
 
-        .movie-title {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .movie-info {
-            font-size: 14px;
-            color: #555;
-        }
-
-        .review-button {
-            margin: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .review-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-
-<button
-        class="review-button"
-        onclick="location.href='/add'"
->리뷰 쓰기
-</button>
-
-
-<div class="container">
-    {% for list in review_list %}
-        <a href="review/{{ list.id }}">
-        <div class="movie">
-            <img src="spiderman.png" alt="스파이더맨">
-            <div class="movie-title">{{ list.title }}</div>
-            <div class="movie-info">
-                개봉년도: {{ list.year }}<br>
-                장르: {{ list.genre }}<br>
-                별점: {{ list.rate }}
-            </div>
-        </div>
-        </a>
-    {% endfor %}
-
+    </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

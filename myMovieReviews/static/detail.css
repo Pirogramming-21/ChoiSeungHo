@@ -1,0 +1,48 @@
+.container2 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.movie-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.movie-header h1 {
+    margin: 0;
+}
+
+.movie-header .actions a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.movie-details {
+    display: flex;
+    margin-top: 20px;
+}
+
+.movie-poster {
+    width: 150px;
+    height: 200px;
+    background-color: #ddd;
+    margin-right: 20px;
+}
+
+.movie-info {
+    flex: 1;
+}
+
+.movie-info p {
+    margin: 5px 0;
+}
+
+.movie-description {
+    margin-top: 20px;
+}

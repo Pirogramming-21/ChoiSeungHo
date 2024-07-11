@@ -1,0 +1,51 @@
+.container5 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.movie {
+    background: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.movie img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.movie-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.movie-info {
+    font-size: 14px;
+    color: #555;
+}
+
+.review-button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.review-button:hover {
+    background-color: #0056b3;
+}
+
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

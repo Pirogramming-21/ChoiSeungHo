@@ -1,192 +1,84 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화 리뷰 작성</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+{% extends 'header.html' %}
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+{% block content %}
 
-        .container {
-            background: #fff;
-            padding: 30px 50px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .container h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 25px;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-        }
-
-        .form-group .radio-group {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .form-group .radio-group input {
-            margin-right: 10px;
-        }
-
-        .form-group .radio-group label {
-            margin-right: 20px;
-            font-weight: 500;
-        }
-
-        .form-group .rating-group {
-            display: flex;
-            justify-content: space-between;
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .form-group .rating-group label {
-            margin-right: 10px;
-            font-weight: 500;
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            background-color: #007BFF;
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
-
-
-    </style>
-
-</head>
-<body>
-<div class="container">
-    <h1>영화 리뷰 작성</h1>
-    <form method="post" action="/review/{{ review.id }}/update">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title" value="{{ review.title }}" required>
-        </div>
-        <div class="form-group">
-            <label for="review">리뷰</label>
-            <textarea id="review" name="review" rows="4"
-                      required>{{ review.review }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="year">개봉년도</label>
-            <select id="year" name="year" required value="{{ review.title }}">
-                <option value="">선택하세요</option>
-                <!-- 개봉년도 옵션 -->
-                <script>
-                    const currentYear = new Date().getFullYear();
-                    const selectedYear = "{{ review.year }}";
-                    for (let year = currentYear; year >= 2000; year--) {
-                        const selected = year == selectedYear ? 'selected' : '';
-                        document.write(`<option value="${year}" ${selected}>${year}</option>`);
-                    }
-                </script>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>장르</label>
-            <div class="radio-group">
-                <label><input type="radio" name="genre" value="액션" required
-                              {% if review.genre == '액션' %}checked{% endif %}> 액션</label>
-                <label><input type="radio" name="genre" value="드라마" required
-                              {% if review.genre == '드라마' %}checked{% endif %}> 드라마</label>
-                <label><input type="radio" name="genre" value="코미디" required
-                              {% if review.genre == '코미디' %}checked{% endif %}> 코미디</label>
-                <label><input type="radio" name="genre" value="로맨스" required
-                              {% if review.genre == '로맨스' %}checked{% endif %}> 로맨스</label>
-                <label><input type="radio" name="genre" value="공포" required
-                              {% if review.genre == '공포' %}checked{% endif %}> 공포</label>
+<div class="update">
+    <div class="container1">
+        <h1>영화 리뷰 업데이트</h1>
+        <form method="post" action="/review/{{ review.id }}/update">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" value="{{ review.title }}" required>
             </div>
-
-
-        </div>
-        <div class="form-group">
-            <label>별점</label>
-            <div class="rating-group">
-                <label><input type="radio" name="star" value="1" required
-                              {% if review.rate == '1점' %}checked{% endif %}> 1</label>
-                <label><input type="radio" name="star" value="2" required
-                              {% if review.rate == '2점' %}checked{% endif %}> 2</label>
-                <label><input type="radio" name="star" value="3" required
-                              {% if review.rate == '3점' %}checked{% endif %}> 3</label>
-                <label><input type="radio" name="star" value="4" required
-                              {% if review.rate == '4점' %}checked{% endif %}> 4</label>
-                <label><input type="radio" name="star" value="5" required
-                              {% if review.rate == '5점' %}checked{% endif %}> 5</label>
+            <div class="form-group">
+                <label for="review">리뷰</label>
+                <textarea id="review" name="review" rows="4"
+                          required>{{ review.review }}</textarea>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="movie_time">영화 총 시간 (분)</label>
-            <input type="number" id="movie_time" min=0 name="movie_time"
-                   value="{{ review.movie_time }}"
-                   required>
-        </div>
-        <div class="form-group">
-            <label for="director">감독</label>
-            <input type="text" id="director" name="director" value="{{ review.director }}" required>
-        </div>
-        <div class="form-group">
-            <label for="actor">배우</label>
-            <input type="text" id="actor" name="actor" value="{{ review.actor }}" required>
-        </div>
-        <button type="submit" class="btn-submit">리뷰 업데이트</button>
-    </form>
+            <div class="form-group">
+                <label for="year">개봉년도</label>
+                <select id="year" name="year" required value="{{ review.title }}">
+                    <option value="">선택하세요</option>
+                    <!-- 개봉년도 옵션 -->
+                    <script>
+                        const currentYear = new Date().getFullYear();
+                        const selectedYear = "{{ review.year }}";
+                        for (let year = currentYear; year >= 2000; year--) {
+                            const selected = year == selectedYear ? 'selected' : '';
+                            document.write(`<option value="${year}" ${selected}>${year}</option>`);
+                        }
+                    </script>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>장르</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="genre" value="액션" required
+                                  {% if review.genre == '액션' %}checked{% endif %}> 액션</label>
+                    <label><input type="radio" name="genre" value="드라마" required
+                                  {% if review.genre == '드라마' %}checked{% endif %}> 드라마</label>
+                    <label><input type="radio" name="genre" value="코미디" required
+                                  {% if review.genre == '코미디' %}checked{% endif %}> 코미디</label>
+                    <label><input type="radio" name="genre" value="로맨스" required
+                                  {% if review.genre == '로맨스' %}checked{% endif %}> 로맨스</label>
+                    <label><input type="radio" name="genre" value="공포" required
+                                  {% if review.genre == '공포' %}checked{% endif %}> 공포</label>
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                <label>별점</label>
+                <div class="rating-group">
+                    <label><input type="radio" name="star" value="1" required
+                                  {% if review.rate == '1점' %}checked{% endif %}> 1</label>
+                    <label><input type="radio" name="star" value="2" required
+                                  {% if review.rate == '2점' %}checked{% endif %}> 2</label>
+                    <label><input type="radio" name="star" value="3" required
+                                  {% if review.rate == '3점' %}checked{% endif %}> 3</label>
+                    <label><input type="radio" name="star" value="4" required
+                                  {% if review.rate == '4점' %}checked{% endif %}> 4</label>
+                    <label><input type="radio" name="star" value="5" required
+                                  {% if review.rate == '5점' %}checked{% endif %}> 5</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="movie_time">영화 총 시간 (분)</label>
+                <input type="number" id="movie_time" min=0 name="movie_time"
+                       value="{{ review.movie_time }}"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="director">감독</label>
+                <input type="text" id="director" name="director" value="{{ review.director }}" required>
+            </div>
+            <div class="form-group">
+                <label for="actor">배우</label>
+                <input type="text" id="actor" name="actor" value="{{ review.actor }}" required>
+            </div>
+            <button type="submit" class="btn-submit">리뷰 업데이트</button>
+        </form>
+    </div>
 </div>
-</body>
-</html>
+{% endblock %}
