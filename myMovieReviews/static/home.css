@@ -93,3 +93,12 @@
     flex-direction: column;
     align-items: center;
 }
+
+.gd{
+    text-decoration: none;
+}
+
+.gd:hover{
+    text-decoration: none;
+    color: red;
+}

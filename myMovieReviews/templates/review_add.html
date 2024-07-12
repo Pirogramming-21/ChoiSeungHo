@@ -28,8 +28,13 @@
                         <!-- 개봉년도 옵션 -->
                         <script>
                             const currentYear = new Date().getFullYear();
+                            const select = document.getElementById('year');
+
                             for (let year = currentYear; year >= 2000; year--) {
-                                document.write(`<option value="${year}">${year}</option>`);
+                                const option = document.createElement('option');
+                                option.value = year;
+                                option.textContent = year;
+                                select.appendChild(option);
                             }
                         </script>
                     </select>

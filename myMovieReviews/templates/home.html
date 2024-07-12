@@ -16,7 +16,7 @@
     </div>
     <div class="container5">
         {% for list in review_list %}
-            <a href="review/{{ list.id }}">
+            <a class="gd" href="review/{{ list.id }}" style="text-decoration: none">
                 <div class="movie">
                     <img src="{{ list.img_url.url }}" alt="스파맨">
                     <div class="movie-title">{{ list.title }}</div>

@@ -91,3 +91,7 @@
 .btn-submit:hover {
     background-color: #0056b3;
 }
+
+input[type="file"] {
+    display: none;
+}

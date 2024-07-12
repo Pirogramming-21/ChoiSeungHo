@@ -54,6 +54,7 @@ def review_detail(request, pk):
 def review_update(request, pk):
     reviews = Review.objects.get(id=pk)
     context = {'review': reviews}
+    img_file = request.FILES.get('img_url')
     print(reviews.title)
     print(reviews.movie_time)
     if request.method == 'POST':
@@ -65,7 +66,9 @@ def review_update(request, pk):
         reviews.director = request.POST['director']
         reviews.actor = request.POST['actor']
         reviews.year = request.POST['year']
-        reviews.img_url = request.FILES['img_url']
+        if img_file:
+            reviews.img_url = img_file
+
         reviews.save()
         return redirect(f'/review/{reviews.id}')
     return render(request, 'review_update.html', context)
