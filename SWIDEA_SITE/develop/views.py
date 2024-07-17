@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 
+from idea.models import Idea
 from .models import Develop
 from .forms import DevelopForm
 
@@ -26,7 +27,9 @@ def create(request):
 
 def detail(request, pk):
     develop = Develop.objects.get(pk=pk)
-    context = {'develop': develop}
+    id_develop = Idea.objects.filter(devtool_id=pk)
+    context = {'develop': develop,
+               'id_tool': id_develop}
     return render(request, 'develop/detail.html', context)
 
 
@@ -45,4 +48,4 @@ def update(request, pk):
             return redirect('develop:detail', pk=pk)
 
     context = {'pk': pk, 'form': form}
-    return render(request, 'develop/detail.html', context)
+    return render(request, 'develop/update.html', context)

@@ -6,7 +6,7 @@
         <div class="card text-center">
             <div class="card-header">
                 <h3 class="text-black">아이디어 세부사항</h3>
-                <p class="text-black" style="font-weight: bold">제목: {{ idea.title }}.</p>
+                <p class="text-black" style="font-weight: bold">제목: {{ idea.title }}</p>
             </div>
             <div class="card-body">
                 <img src="{{ idea.img_url.url }}" alt="X" class="img-fluid"
@@ -16,10 +16,15 @@
                 <p>1) 아이디어 관심도: {{ idea.interest }}</p>
                 <p>2) 개발 툴: {{ idea.devtool.name }}</p>
                 <p>3) 아이디어 설명: {{ idea.content }} </p>
-                <button class="btn btn-danger mr-2">삭제</button>
-                <button class="btn btn-secondary mr-2">목록</button>
-                <button class="btn btn-primary mr-2">수정</button>
-                <button class="btn btn-success">찜하기</button>
+                <form action="{% url 'idea:delete' idea.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger mr-2" type="submit">삭제</button>
+                    <a href="{% url 'idea:main' %}" class="btn btn-secondary mr-2">목록</a>
+                    <a href="{% url 'idea:update' idea.pk %}" class="btn btn-primary mr-2">수정</a>
+                    <button class="btn btn-success">찜하기</button>
+                </form>
+
+
             </div>
         </div>
     </div>

@@ -46,7 +46,7 @@ def main(request):
 
     ideas = ideas.order_by(sort_order.get(sort, '-interest'))
 
-    paginator = Paginator(ideas, 4)  # 페이지당 4개의 아이디어를 표시
+    paginator = Paginator(ideas, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -67,7 +67,8 @@ def create(request):
 
 def detail(request, pk):
     idea = Idea.objects.get(pk=pk)
-    context = {'idea': idea}
+    context = {'idea': idea,
+               'pk': pk}
     return render(request, 'idea/detail.html', context)
 
 
@@ -78,12 +79,14 @@ def delete(request, pk):
 
 def update(request, pk):
     idea = Idea.objects.get(pk=pk)
-    form = IdeaForm(instance=idea)
+
     if request.method == 'POST':
         form = IdeaForm(request.POST, request.FILES, instance=idea)
         if form.is_valid():
             form.save()
-            return redirect('idea:detail', pk=pk)
+            return redirect('idea:detail', pk=pk)  # 저장 후 detail 뷰로 리디렉션
+    else:
+        form = IdeaForm(instance=idea)  # 기존 인스턴스로 폼 초기화
 
     context = {'pk': pk, 'form': form}
-    return render(request, 'idea/detail.html', context)
+    return render(request, 'idea/update.html', context)
