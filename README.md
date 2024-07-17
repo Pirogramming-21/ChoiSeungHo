@@ -158,6 +158,40 @@
     ![영화리뷰](https://github.com/user-attachments/assets/36d419ec-d211-41f3-8087-17bf51f38854)
 
 
+- ### 7. 13(토) user model custom / DB 개론
+    
+    오전 : user model custom
+
+    오후 : DB 개론
+    
+
+    - **아홉번째 과제**
+
+
+    **ERD 작성하기!**
+
+    ![image](https://github.com/user-attachments/assets/f8a65f40-8dd5-43fc-b528-20dc9ea9c63c)
+
+    https://www.erdcloud.com/d/rrAoYAKjAngWiGEmK
+
+
+    **AJAX 강의 듣기!**
+     
+    ![AJAX 선행강의](https://github.com/user-attachments/assets/3ad6c693-0d9d-449c-afb7-0d2be7a6edd3)
+
+
+
+- ### 7. 16(화) 장고 ORM 및 장고 개론 /  Django 중급 실습
+    
+    오전, 오후 : Django 중급 세션
+
+    - **열번째 과제**
+
+
+    **아이디어 관리 사이트 만들기!**
+
+    ![아이디어 쟝고](https://github.com/user-attachments/assets/115ca124-c6c2-454c-b1f8-153d7d9e3558)
+
 
 
 
