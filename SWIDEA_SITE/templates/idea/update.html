@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+
+{%block content%}
+   <div class="container">
+        <h1 class="mt-4">아이디어 리스트</h1>
+        <div class="sort-dropdown">
+            <select class="form-control" id="sortOrder">
+                <option value="interest">찜하기순</option>
+                <option value="title">이름순</option>
+                <option value="newest">최신순</option>
+                <option value="oldest">과거순</option>
+            </select>
+        </div>
+        <div class="row">
+            {% for idea in ideas %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ idea.img_url.url }}" class="card-img-top" alt="이미지">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ idea.title }}</h5>
+                        <p class="card-text">작성자: {{ idea.user.username }}</p>
+                        <p class="card-text">개발툴: {{ idea.devtool.name }}</p>
+                        <p class="card-text">찜하기: {{ idea.interest }}</p>
+                        <p class="card-text">작성일: {{ idea.created_date }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <nav aria-label="페이지 내비게이션">
+            <ul class="pagination">
+                {% if ideas.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ ideas.previous_page_number }}" aria-label="이전">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% for num in ideas.paginator.page_range %}
+                <li class="page-item {% if ideas.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endfor %}
+                {% if ideas.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ ideas.next_page_number }}" aria-label="다음">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <script>
+        document.getElementById('sortOrder').addEventListener('change', function() {
+            const selectedValue = this.value;
+            window.location.href = '?sort=' + selectedValue;
+        });
+    </script>
+{%endblock%}

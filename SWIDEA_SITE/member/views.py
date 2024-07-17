@@ -12,4 +12,4 @@ def create(request):
     form = MemberForm(request.POST)
     if form.is_valid():
         form.save()
-    return redirect('idea:list')
+    return redirect('idea:main')

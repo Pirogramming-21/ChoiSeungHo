@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+
+{%block content%}
+<div class="container mt-5">
+  <h2>Create a New Idea</h2>
+  <form 
+    action="{% url 'idea:create' %}"
+    method="post"
+    enctype="multipart/form-data"
+    class="needs-validation" novalidate
+  >
+    {% csrf_token %}
+    <div class="form-row">
+      {% for field in form %}
+        <div class="form-group col-md-6">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-success">등록하기</button>
+  </form>
+</div>
+
+{%endblock%}

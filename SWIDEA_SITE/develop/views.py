@@ -8,17 +8,20 @@ from .forms import DevelopForm
 
 def main(request):
     develop = Develop.objects.all()
-    context = {'develop', develop}
+    context = {'develop': develop}
 
     return render(request, 'develop/list.html', context)
 
 
 def create(request):
-    form = DevelopForm(request.post, request.FILES)
+    form = DevelopForm(request.POST, request.FILES)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
         return redirect('develop:main')
+    form = DevelopForm()
+    context = {'form': form}
+    return render(request, 'develop/create.html', context)
 
 
 def detail(request, pk):
