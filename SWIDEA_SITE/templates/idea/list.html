@@ -6,9 +6,10 @@
         <div class="row mb-4">
             <div class="col-md-8">
                 <select class="form-control" id="sortOrder">
-                    <option value="interest">찜하기순</option>
-                    <option value="title">이름순</option>
                     <option value="newest">최신순</option>
+                    <option value="star">찜하기순</option>
+                    <option value="title">이름순</option>
+
                     <option value="oldest">과거순</option>
                 </select>
             </div>
@@ -29,6 +30,8 @@
                 <div class="col-md-3">
                     <div class="card">
                         <img src="{{ idea.img_url.url }}" class="card-img-top" alt="이미지">
+                   
+
                         <div class="card-body">
                             <a href="{% url 'idea:detail' idea.pk %}">
                                 <h5 class="card-title">{{ idea.title }}</h5>

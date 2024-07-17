@@ -11,8 +11,12 @@
             <div class="card-body">
                 <img src="{{ idea.img_url.url }}" alt="X" class="img-fluid"
                      style="max-height: 150px;">
+                {% if star_exist %}
+                    <h4 class="mt-3">{{ idea.pk }} 번째 게시물 <span class="text-warning">★</span></h4>
+                {% else %}
+                    <h4 class="mt-3">{{ idea.pk }} 번째 게시물 <span class="text-warning">☆</span></h4>
 
-                <h4 class="mt-3">{{ idea.pk }} 번째 게시물 <span class="text-warning">★</span></h4>
+                {% endif %}
                 <p>1) 아이디어 관심도: {{ idea.interest }}</p>
                 <p>2) 개발 툴: {{ idea.devtool.name }}</p>
                 <p>3) 아이디어 설명: {{ idea.content }} </p>
@@ -21,8 +25,19 @@
                     <button class="btn btn-danger mr-2" type="submit">삭제</button>
                     <a href="{% url 'idea:main' %}" class="btn btn-secondary mr-2">목록</a>
                     <a href="{% url 'idea:update' idea.pk %}" class="btn btn-primary mr-2">수정</a>
-                    <button class="btn btn-success">찜하기</button>
                 </form>
+
+                {% if star_exist %}
+                    <form action="{% url 'star:delete' idea.pk %}" method="POST" class="mt-5">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">찜 취소하기</button>
+                    </form>
+                {% else %}
+                    <form action="{% url 'star:push' idea.pk %}" method="POST" class="mt-5">
+                        {% csrf_token %}
+                        <button class="btn btn-success">찜하기</button>
+                    </form>
+                {% endif %}
 
 
             </div>

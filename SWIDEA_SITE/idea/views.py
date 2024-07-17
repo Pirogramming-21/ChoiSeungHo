@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from idea.models import Idea
+from star.models import Star
 from .forms import IdeaForm
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
@@ -30,11 +31,11 @@ def change_interest(request):
 
 
 def main(request):
-    sort = request.GET.get('sort', 'interest')
+    sort = request.GET.get('sort', 'newest')
     query = request.GET.get('q', '')
 
     sort_order = {
-        'interest': '-interest',
+        'star': 'star__created_date',
         'title': 'title',
         'newest': '-created_date',
         'oldest': 'created_date'
@@ -44,15 +45,20 @@ def main(request):
     if query:
         ideas = ideas.filter(title__icontains=query)
 
-    ideas = ideas.order_by(sort_order.get(sort, '-interest'))
+    if sort == 'star':
+        # 외래키로 연결된 Star가 존재하는 Idea만 필터링
+        ideas = ideas.filter(star__isnull=False).distinct()
+
+    ideas = ideas.order_by(sort_order.get(sort, '-created_date'))
 
     paginator = Paginator(ideas, 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    context = {'ideas': page_obj, 'request': request}
+    star = Star.objects.all()
+    context = {'ideas': page_obj,
+               'stars': star}
     return render(request, 'idea/list.html', context)
-
 
 def create(request):
     if request.method == 'POST':
@@ -67,8 +73,11 @@ def create(request):
 
 def detail(request, pk):
     idea = Idea.objects.get(pk=pk)
+    star_exist = Star.objects.filter(idea=pk).exists()
+    print(star_exist)
     context = {'idea': idea,
-               'pk': pk}
+               'pk': pk,
+               'star_exist': star_exist}
     return render(request, 'idea/detail.html', context)
 
 

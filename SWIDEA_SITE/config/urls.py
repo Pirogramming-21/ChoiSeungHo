@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('idea.urls')),
     path('develop/', include('develop.urls')),
-    path('member/', include('member.urls'))
+    path('member/', include('member.urls')),
+    path('star/', include('star.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

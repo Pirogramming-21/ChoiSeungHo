@@ -23,3 +23,12 @@
 .sort-dropdown {
     margin-bottom: 20px;
 }
+
+
+.filled-star {
+    color: gold;
+}
+
+.empty-star {
+    color: lightgray;
+}
