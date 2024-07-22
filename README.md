@@ -129,6 +129,8 @@
     ![술게임](https://github.com/Pirogramming-21/ChoiSeungHo/assets/74850409/7556bc95-2fd3-493c-9ddd-7fca49d12299)
 
 
+## 😊Week3
+
 - ### 7. 9(화) Django 설치 및 가상환경 설정 / 크롤링 
     
     오전 : 크롤링
@@ -180,6 +182,7 @@
     ![AJAX 선행강의](https://github.com/user-attachments/assets/3ad6c693-0d9d-449c-afb7-0d2be7a6edd3)
 
 
+## 😊Week4
 
 - ### 7. 16(화) 장고 ORM 및 장고 개론 /  Django 중급 실습
     
