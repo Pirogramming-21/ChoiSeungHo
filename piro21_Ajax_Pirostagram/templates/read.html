@@ -22,7 +22,8 @@
     <div id="post" class="mb-4">
         <h3 id="postTitle">{{ post.title }}</h3>
         <p id="postContent">{{ post.content }}</p>
-        <p class="like-button" id="likeButton">좋아요 <span id="likeCount">0</span></p>
+        <p class="like-button" id="likeButton" onclick="onClickLike({{ post.id }}, 'like')">좋아요
+            <span id="likeCount">{{ count }}</span></p>
         <a href="{% url 'posts:post_update' post.id %}" class="btn btn-primary">글 수정</a>
         <form action="{% url 'posts:post_delete' post.id %}" method="POST" style="display:inline;">
             {% csrf_token %}
@@ -31,16 +32,183 @@
     </div>
     <hr>
     <h4>댓글 작성</h4>
-    <form id="commentForm">
-        <div class="form-group">
-            <textarea class="form-control" id="comment" rows="2" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-secondary">댓글 작성</button>
-    </form>
+    <div class="form-group">
+        <textarea class="form-control" id="comment" rows="2" required></textarea>
+    </div>
+    <button class="btn btn-secondary" onclick="onClickComment({{ post.id }})">댓글 작성</button>
+
     <hr>
-    <h4>댓글</h4>
-    <ul id="commentList" class="list-unstyled"></ul>
+    <h4 class="comment-num">댓글 {{ c_count }}</h4>
+    <div id="commentContainer">
+        {% for comment in comments %}
+            <div id="comment-{{ comment.id }}">
+                <p>{{ comment.content }}</p>
+                <form method="POST" action="{% url 'posts:comment_delete' comment.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="deleteButton" data-id="{{ comment.id }}">삭제</button>
+                </form>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+
 </div>
 
 </body>
+<script>
+    const requestComment = new XMLHttpRequest();
+    const onClickComment = (id) => {
+        const commentText = document.getElementById('comment').value;
+
+        const url = "/comment/";
+        requestComment.open("POST", url, true);
+        requestComment.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+
+        const params = JSON.stringify({id: id, content: commentText});
+        requestComment.send(params.toString());
+    }
+
+    requestComment.onreadystatechange = () => {
+        if (requestComment.readyState === XMLHttpRequest.DONE) {
+            if (requestComment.status < 400) {
+                const {id, content} = JSON.parse(requestComment.response)
+
+                // 댓글 목록을 가져옴
+                let commentList = document.getElementById('commentList');
+
+                // 댓글이 없을 경우 commentList를 생성
+                if (!commentList) {
+                    commentList = document.createElement('div');
+                    commentList.id = 'commentList';
+                    commentList.className = 'container';
+                    document.body.appendChild(commentList);
+                }
+
+                // 새로운 댓글을 추가
+                const newComment = document.createElement('div');
+                newComment.id = `comment-${id}`;
+
+                const commentText = document.createElement('p');
+                commentText.textContent = content;
+
+                const deleteForm = document.createElement('form');
+                deleteForm.method = 'post';
+                deleteForm.action = `/delete_comment/${id}/`;
+
+                const csrfToken = document.createElement('input');
+                csrfToken.type = 'hidden';
+                csrfToken.name = 'csrfmiddlewaretoken';
+                csrfToken.value = getCsrfToken();
+
+                const deleteButton = document.createElement('button');
+                deleteButton.type = 'submit';
+                deleteButton.textContent = '삭제';
+                deleteButton.className = 'deleteButton'
+                deleteButton.setAttribute('data-id', id);
+
+                deleteForm.appendChild(csrfToken);
+                deleteForm.appendChild(deleteButton);
+
+                const hr = document.createElement('hr');
+
+                newComment.appendChild(commentText);
+                newComment.appendChild(deleteForm);
+                newComment.appendChild(hr);
+
+                commentList.insertBefore(newComment, commentList.firstChild);
+
+                const element = document.querySelector('.comment-num');
+                const originHTML = element.innerHTML;
+                const [text, num] = originHTML.split(" ");
+                const count = Number(num) + 1;
+
+                element.innerHTML = `${text} ${count}`;
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // 모든 삭제 버튼에 이벤트 리스너 추가
+        document.querySelectorAll('.deleteButton').forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault(); // 폼 제출 방지
+
+                const commentId = event.target.getAttribute('data-id');
+                deleteComment(commentId);
+            });
+        });
+    });
+
+    const deleteComment = (id) => {
+        const requestDelete = new XMLHttpRequest();
+        const url = `/delete_comment/${id}/`;
+
+        requestDelete.open("POST", url, true);
+        requestDelete.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+
+        // CSRF 토큰 설정
+        const csrfToken = getCsrfToken();
+        requestDelete.setRequestHeader("X-CSRFToken", csrfToken);
+
+        requestDelete.send();
+
+        requestDelete.onreadystatechange = () => {
+            if (requestDelete.readyState === XMLHttpRequest.DONE) {
+                if (requestDelete.status < 400) {
+                    const commentElement = document.getElementById(`comment-${id}`);
+                    if (commentElement) {
+                        commentElement.remove();
+                    }
+
+
+                    const element = document.querySelector('.comment-num');
+                    const originHTML = element.innerHTML;
+                    const [text, num] = originHTML.split(" ");
+                    const count = Number(num) - 1;
+                    element.innerHTML = `${text} ${count}`;
+                }
+            }
+        };
+    };
+
+
+    function getCsrfToken() {
+        return document.querySelector('[name=csrfmiddlewaretoken]').value;
+    }
+</script>
+
+
+<script>
+    const requestLike = new XMLHttpRequest();
+
+    const onClickLike = (id) => {
+        const url = "/like/";
+        requestLike.open("POST", url, true);
+        requestLike.setRequestHeader(
+            "Co0ntent-Type",
+            "application/x-www-form-urlencoded"
+        );
+        requestLike.send(JSON.stringify({id: id}));
+    }
+
+    requestLike.onreadystatechange = () => {
+        if (requestLike.readyState === XMLHttpRequest.DONE) {
+            if (requestLike.status < 400) {
+                const {id} = JSON.parse(requestLike.response)
+                const element = document.querySelector(`#likeCount`);
+                const originHTML = element.innerHTML;
+                const count = Number(originHTML) + 1;
+
+                element.innerHTML = `${count}`;
+            }
+        }
+    }
+
+</script>
 </html>

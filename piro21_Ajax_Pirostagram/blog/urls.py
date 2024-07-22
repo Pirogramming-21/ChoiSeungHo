@@ -10,6 +10,8 @@ urlpatterns = [
     path('<int:pk>/delete', post_delete, name='post_delete'),
     path('<int:pk>/comments/create', comment_create, name='comment_create'),
     path('<int:pk>/comments/delete', comment_delete, name='comment_delete'),
-#    path('<int:pk>/like/', like, name='like'),
+    path('like/', like, name='like'),
+    path('comment/', comment, name='comment'),
+    path('delete_comment/<int:pk>/', comment_delete, name='comment_delete'),
 
 ]
